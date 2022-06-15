@@ -3,7 +3,7 @@ import React from "react";
 import styled from "styled-components";
 
 export default function Logo() {
-  return <LogoComponent>THP</LogoComponent>;
+  return <LogoComponent>Movie</LogoComponent>;
 }
 
 const LogoComponent = styled.div`
