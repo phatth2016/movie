@@ -1,4 +1,11 @@
 import styled from "styled-components";
+import { Carousel } from "antd";
+
+export const Styled = styled(Carousel)`
+  .slick-dots li {
+    width: 30px;
+  }
+`;
 
 export const BannerStyled = styled.div`
   position: relative;
@@ -15,6 +22,7 @@ export const BannerStyled = styled.div`
     max-height: 70vh;
     object-fit: cover;
   }
+
   @media (max-width: 768px) {
     .banner-image {
       min-height: 70vh;

@@ -2,8 +2,7 @@ import { PlayCircleFilled } from "@ant-design/icons";
 import { Image } from "antd";
 import React, { useEffect, useState } from "react";
 import { getUpcomingVideo } from "../../api";
-import { BannerStyled, Info, Button } from "./styled";
-import { Carousel } from "antd";
+import { BannerStyled, Info, Button, Styled } from "./styled";
 import GlobalModal from "../GlobalModal";
 import Video from "../Video";
 
@@ -21,9 +20,9 @@ export default function Banner() {
   };
 
   return (
-    <Carousel autoplay>
+    <Styled autoplay>
       {listVideo.map((item, index) => (
-        <BannerStyled>
+        <BannerStyled key={item.id}>
           <div className="overlay"></div>
           <Image
             className="banner-image"
@@ -46,6 +45,6 @@ export default function Banner() {
           </Info>
         </BannerStyled>
       ))}
-    </Carousel>
+    </Styled>
   );
 }

@@ -23,6 +23,7 @@ export default function Search({ searchText, setSearchText }) {
         placeholder="search..."
         value={searchTextDebounce}
         onChange={handleChangeInput}
+        zoom={1}
       />
       <SearchOutlined className="icon-search" />
     </SeachStyled>
