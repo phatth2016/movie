@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SeachStyled = styled.div`
   position: relative;
-  width: 300px;
+  width: 60px;
   .icon-search {
     position: absolute;
     right: 10px;
@@ -22,6 +22,10 @@ export const SeachStyled = styled.div`
     :focus {
       outline: none;
     }
+  }
+  :hover {
+    width: 260px;
+    transition: all 0.3s ease-in-out;
   }
 `;
 

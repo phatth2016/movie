@@ -75,7 +75,6 @@ export default function Home({ searchText }) {
   const handleChangeTab = (tab) => {
     setTab(tab);
     setPageNow(1);
-    setListMovies([]);
   };
 
   return (

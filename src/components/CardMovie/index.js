@@ -12,10 +12,11 @@ export default function index({ movie, onClick, direction, isActive }) {
     >
       <div className={isActive ? "card active" : "card"}>
         <div className="card-image">
+          <div className="overlay"></div>
           <Image
             className="lazy"
             srcSet={process.env.REACT_APP_URL_IMG + movie.poster_path}
-            src="/assets/img/loading.png"
+            src="/assets/images/loading.png"
             preview={false}
           />
         </div>

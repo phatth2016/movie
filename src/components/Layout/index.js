@@ -15,11 +15,11 @@ const Header = styled.div`
   display: flex;
   justify-content: end;
   align-items: center;
-  background: #fafafa05;
+  /* background: #fafafa05; */
 `;
 
 const Main = styled.div`
-  background: #232323;
+  background: #000;
   min-height: 100vh;
   color: #fff;
 `;

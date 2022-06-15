@@ -8,6 +8,7 @@ export const ListCard = styled.div`
   padding: 0;
   display: flex;
   flex-direction: ${(props) => (props.isGrid ? "row" : "column")};
+  justify-content: center;
 `;
 
 export const Styled = styled.div`
