@@ -20,16 +20,6 @@ export const CardMovie = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
     }
-    /* .card-image {
-      height: 350px;
-      background-color: tomato;
-      border-radius: 8px;
-      background: ${(props) =>
-      `url(${process.env.REACT_APP_URL_IMG + props.image})`};
-      box-shadow: 0 0 10px 3px #e97101;
-      background-size: cover;
-      background-position: center;
-    } */
     .card-desc {
       display: -webkit-box;
       -webkit-line-clamp: 4;
@@ -37,7 +27,32 @@ export const CardMovie = styled.div`
       overflow: hidden;
       text-overflow: ellipsis;
     }
+    &.active {
+      background: #e97101;
+      color: #fff;
+    }
   }
+  &.horizontal {
+    width: 100%;
+    text-align: left;
+    .card {
+      display: flex;
+      .card-image {
+        min-width: 200px;
+        max-width: 200px;
+        margin-right: 20px;
+      }
+      .card-name {
+        margin-bottom: 24px;
+      }
+    }
+  }
+  :hover {
+    .card {
+      box-shadow: 0 0 10px #e97101;
+    }
+  }
+
   @media (max-width: 1440px) {
     width: 25%;
   }

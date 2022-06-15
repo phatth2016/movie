@@ -71,7 +71,7 @@ export default class GlobalModal extends Component {
       <GlobalModalStyled className={animateClassName}>
         <div className="dimmer" onClick={onPressBackground} />
         <div className="center-modal" onClick={(e) => e.stopPropagation()}>
-          {this.state.visible && children}
+          {children}
         </div>
       </GlobalModalStyled>
     );

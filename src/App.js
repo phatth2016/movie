@@ -11,18 +11,21 @@ import Search from "./components/Search";
 import GlobalModal from "./components/GlobalModal";
 
 function App() {
+  const [searchText, setSearchText] = React.useState("");
+  console.log("searchText: ", searchText);
+
   return (
     <div className="App">
       <GlobalModal />
       <Router>
-        <Sider />
+        {/* <Sider /> */}
         <Header>
-          <Search />
+          <Search searchText={searchText} setSearchText={setSearchText} />
         </Header>
         <Layout>
           <Main>
             <Routes>
-              <Route path="/" element={<Home />} />
+              <Route path="/" element={<Home searchText={searchText} />} />
             </Routes>
           </Main>
         </Layout>

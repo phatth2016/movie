@@ -9,7 +9,7 @@ const Header = styled.div`
   min-height: 80px;
   padding: 10px 24px;
   position: fixed;
-  left: 100px;
+  /* left: 100px; */
   right: 0;
   z-index: 5;
   display: flex;
@@ -21,6 +21,7 @@ const Header = styled.div`
 const Main = styled.div`
   background: #232323;
   min-height: 100vh;
+  color: #fff;
 `;
 
 export { Layout, Header, Main, Sider };

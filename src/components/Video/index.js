@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import GlobalModal from "../GlobalModal";
 import { VideoStyled } from "./styled";
 import { getVideoById } from "../../api";
 
@@ -19,20 +18,18 @@ function Video({ selectedMovie }) {
 
   if (!video) return null;
 
-  return GlobalModal.show(
-    <>
-      <VideoStyled
-        width="800"
-        height="400"
-        src={video}
-        title={selectedMovie?.title}
-        frameborder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowfullscreen
-        id="iframe"
-        loading="lazy"
-      />
-    </>
+  return (
+    <VideoStyled
+      width="800"
+      height="400"
+      src={video}
+      title={selectedMovie?.title}
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowFullScreen
+      id="iframe"
+      loading="lazy"
+    />
   );
 }
 

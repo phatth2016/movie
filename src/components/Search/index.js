@@ -1,44 +1,30 @@
-import React, { useRef, useState } from "react";
-import { SeachStyled, SearchModal } from "./styled";
+import React, { useEffect, useState } from "react";
+import { SeachStyled } from "./styled";
 import { SearchOutlined } from "@ant-design/icons";
-// import CardMusicHorizontal from "../CardMusicHorizontal";
-import useClickOutside from "../../hooks/useClickOutside";
+import useDebounce from "../../hooks/useDebounce";
 
-export default function Search() {
-  const [text, setText] = useState("");
-  const [isShowModal, setShowModal] = useState(false);
-  const ref = useRef(null);
+export default function Search({ searchText, setSearchText }) {
+  const [searchTextDebounce, setSearchTextDebounce] = useState(searchText);
 
-  useClickOutside(ref, () => setShowModal(false));
+  const debouncedSearchTerm = useDebounce(searchTextDebounce, 5000);
+
+  useEffect(() => {
+    setSearchText(debouncedSearchTerm);
+  }, [debouncedSearchTerm]);
 
   const handleChangeInput = (e) => {
-    setText(e.target.value);
-    setShowModal(true);
+    setSearchTextDebounce(e.target.value);
   };
 
   return (
     <SeachStyled>
       <input
         id="myInput"
-        placeholder="Enter music...., author....."
+        placeholder="search..."
+        value={searchTextDebounce}
         onChange={handleChangeInput}
       />
       <SearchOutlined className="icon-search" />
-      {isShowModal && text && (
-        <SearchModal ref={ref}>
-          <div className="song group">
-            <div className="group-name">Music</div>
-            <div>
-              {/* {[1, 2, 4, 5].map((song) => {
-                return <CardMusicHorizontal />;
-              })} */}
-            </div>
-          </div>
-          <div className="author group">
-            <div className="group-name">Author</div>
-          </div>
-        </SearchModal>
-      )}
     </SeachStyled>
   );
 }

@@ -2,10 +2,15 @@ import { Image } from "antd";
 import React from "react";
 import { CardMovie } from "./styled";
 
-export default function index({ movie, onClick }) {
+export default function index({ movie, onClick, direction, isActive }) {
   return (
-    <CardMovie image={movie.poster_path} onClick={onClick}>
-      <div className="card">
+    <CardMovie
+      image={movie.poster_path}
+      onClick={onClick}
+      direction={direction}
+      className={direction}
+    >
+      <div className={isActive ? "card active" : "card"}>
         <div className="card-image">
           <Image
             className="lazy"

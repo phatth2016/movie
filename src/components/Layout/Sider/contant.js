@@ -9,7 +9,7 @@ import {
 export const MenuData = [
   {
     icon: <HomeOutlined />,
-    name: "home",
+    name: "",
     path: "/",
   },
   {
