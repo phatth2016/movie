@@ -13,7 +13,7 @@ export const SeachStyled = styled.div`
   }
   input {
     color: #fff;
-    background-color: rgb(62 62 62);
+    background-color: #3e3e3e66;
     width: 100%;
     border: none;
     border-radius: 16px;

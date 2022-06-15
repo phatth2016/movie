@@ -93,7 +93,7 @@ export default function Home({ searchText }) {
             className={tab === "now_playing" && "active"}
             onClick={() => handleChangeTab("now_playing")}
           >
-            Popular movies
+            Now Playing
           </h1>
           <h1
             className={tab === "top_rated" && "active"}

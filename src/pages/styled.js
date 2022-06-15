@@ -27,6 +27,7 @@ export const Styled = styled.div`
         color: #fff;
         margin-top: 24px;
         margin-right: 24px;
+        text-transform: uppercase;
         &.active {
           color: #e97101;
         }
@@ -35,16 +36,20 @@ export const Styled = styled.div`
         }
       }
     }
+    .anticon {
+      cursor: pointer;
+    }
     @media (max-width: 768px) {
+      justify-content: center;
       .tab {
         h1 {
-          font-size: 16px;
+          font-size: 14px;
+          margin-right: 12px;
         }
       }
-    }
-
-    > .anticon {
-      cursor: pointer;
+      .anticon {
+        display: none;
+      }
     }
   }
 `;
