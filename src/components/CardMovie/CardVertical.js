@@ -21,7 +21,7 @@ export default function CardVertical({ movie, onClick, direction }) {
                   "?autoplay=1&mute=1"
               );
             });
-          }, 1500);
+          }, 1000);
         }
       });
       ref.current.addEventListener("mouseleave", () => {
