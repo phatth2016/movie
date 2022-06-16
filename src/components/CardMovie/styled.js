@@ -117,6 +117,7 @@ export const CardHorizontalStyled = styled.div`
     box-shadow: 0 0 2px #e97101;
     background: #000000;
     color: #fff;
+    width: 100%;
 
     .card-image {
       min-width: 200px;
@@ -144,18 +145,5 @@ export const CardHorizontalStyled = styled.div`
     .card {
       box-shadow: 0 0 10px #e97101;
     }
-  }
-
-  @media (max-width: 1440px) {
-    width: 25%;
-  }
-  @media (max-width: 1024px) {
-    width: 33.3%;
-  }
-  @media (max-width: 768px) {
-    width: 50%;
-  }
-  @media (max-width: 425px) {
-    width: 100%;
   }
 `;
