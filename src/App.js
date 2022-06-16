@@ -4,7 +4,7 @@ import "antd/dist/antd.css";
 import { BrowserRouter as Router } from "react-router-dom";
 
 import Home from "./pages";
-import { Sider, Main, Layout, Header } from "./components/Layout";
+import { Main, Layout, Header } from "./components/Layout";
 
 import { Route, Routes } from "react-router-dom";
 import Search from "./components/Search";
@@ -18,7 +18,6 @@ function App() {
     <div className="App">
       <GlobalModal />
       <Router>
-        {/* <Sider /> */}
         <Header>
           <Search searchText={searchText} setSearchText={setSearchText} />
         </Header>

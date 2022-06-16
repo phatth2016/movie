@@ -1,4 +1,4 @@
-import { Image } from "antd";
+import { Empty, Image } from "antd";
 import React from "react";
 import { CardMovie } from "./styled";
 
@@ -13,12 +13,16 @@ export default function index({ movie, onClick, direction, isActive }) {
       <div className={isActive ? "card active" : "card"}>
         <div className="card-image">
           <div className="overlay"></div>
-          <Image
-            className="lazy"
-            srcSet={process.env.REACT_APP_URL_IMG + movie.poster_path}
-            src="/assets/images/loading.png"
-            preview={false}
-          />
+          {movie.poster_path ? (
+            <Image
+              className="lazy"
+              srcSet={process.env.REACT_APP_URL_IMG + movie.poster_path}
+              src="/assets/images/loading.png"
+              preview={false}
+            />
+          ) : (
+            <Empty />
+          )}
         </div>
         <div className="card-info">
           <h3 className="card-name">{movie.title}</h3>

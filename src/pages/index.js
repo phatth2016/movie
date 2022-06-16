@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Banner from "../components/Banner";
 import CardMovie from "../components/CardMovie";
-import { getListMovies } from "../api";
+import { getListMovieByKeyword, getListMovies } from "../api";
 import { ListCard, Styled } from "./styled";
 import Video from "../components/Video";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -10,7 +10,14 @@ import Loader from "../components/base/Loader";
 import useListenNetworkError from "../hooks/useListenNetworkError";
 import NetworkError from "../components/base/NetworkError";
 import GlobalModal from "../components/GlobalModal";
-import { OrderedListOutlined, TableOutlined } from "@ant-design/icons";
+import {
+  OrderedListOutlined,
+  TableOutlined,
+  ToTopOutlined,
+} from "@ant-design/icons";
+import Tab from "./Tab";
+
+import { BackToTop } from "../components/base/BackToTop";
 
 export default function Home({ searchText }) {
   const [listMovies, setListMovies] = React.useState([]);
@@ -30,6 +37,23 @@ export default function Home({ searchText }) {
   });
 
   useEffect(() => {
+    setIsLoading(true);
+    if (searchText) {
+      getListMovieByKeyword(searchText, 1).then((res) => {
+        setListMovies(res.data.results);
+        setTotalPage(res.data.total_pages);
+        setIsLoading(false);
+      });
+    } else {
+      getListMovies(1, tab).then((res) => {
+        setListMovies(res.data.results);
+        setTotalPage(res.data.total_pages);
+        setIsLoading(false);
+      });
+    }
+  }, [tab, searchText]);
+
+  useEffect(() => {
     entries.forEach((entry) => {
       if (entry.isIntersecting) {
         let lazyImage = entry.target;
@@ -47,15 +71,6 @@ export default function Home({ searchText }) {
     }
   }, [listMovies, setElements]);
 
-  useEffect(() => {
-    setIsLoading(true);
-    getListMovies(1, tab).then((res) => {
-      setListMovies(res.data.results);
-      setTotalPage(res.data.total_pages);
-      setIsLoading(false);
-    });
-  }, [tab]);
-
   const handleSelectVideo = (movie) => {
     setSelectedMovie(movie);
     GlobalModal.show(<Video selectedMovie={movie} />);
@@ -65,43 +80,29 @@ export default function Home({ searchText }) {
     if (pageNow < totalPage) {
       setIsLoading(true);
       setPageNow(pageNow + 1);
-      getListMovies(pageNow + 1, tab).then((res) => {
-        setListMovies(listMovies.concat(res.data.results));
-        setIsLoading(false);
-      });
+      if (searchText) {
+        getListMovieByKeyword(searchText, pageNow + 1).then((res) => {
+          setListMovies([...listMovies, ...res.data.results]);
+          setIsLoading(false);
+        });
+      } else {
+        getListMovies(pageNow + 1, tab).then((res) => {
+          setListMovies(listMovies.concat(res.data.results));
+          setIsLoading(false);
+        });
+      }
     }
   };
 
   const handleChangeTab = (tab) => {
     setTab(tab);
-    setPageNow(1);
   };
 
   return (
     <Styled>
       <Banner />
       <div className="label">
-        <div className="tab">
-          <h1
-            className={tab === "popular" && "active"}
-            onClick={() => handleChangeTab("popular")}
-          >
-            Popular movies
-          </h1>
-          <h1
-            className={tab === "now_playing" && "active"}
-            onClick={() => handleChangeTab("now_playing")}
-          >
-            Now Playing
-          </h1>
-          <h1
-            className={tab === "top_rated" && "active"}
-            onClick={() => handleChangeTab("top_rated")}
-          >
-            Top Rated
-          </h1>
-        </div>
-
+        {!searchText && <Tab handleChangeTab={handleChangeTab} tab={tab} />}
         <div onClick={() => setIsGrid(!isGrid)}>
           {isGrid ? <OrderedListOutlined /> : <TableOutlined />}
         </div>
@@ -131,6 +132,9 @@ export default function Home({ searchText }) {
               />
             );
           })}
+          <BackToTop visibilityHeight={500}>
+            <ToTopOutlined />
+          </BackToTop>
         </ListCard>
       </InfiniteScroll>
       {isLoading && <Loader />}

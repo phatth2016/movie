@@ -5,8 +5,8 @@ import useDebounce from "../../hooks/useDebounce";
 
 export default function Search({ searchText, setSearchText }) {
   const [searchTextDebounce, setSearchTextDebounce] = useState(searchText);
-
-  const debouncedSearchTerm = useDebounce(searchTextDebounce, 5000);
+  const ref = React.useRef();
+  const debouncedSearchTerm = useDebounce(searchTextDebounce, 1000);
 
   useEffect(() => {
     setSearchText(debouncedSearchTerm);
@@ -16,16 +16,21 @@ export default function Search({ searchText, setSearchText }) {
     setSearchTextDebounce(e.target.value);
   };
 
+  const onFocus = () => {
+    ref.current.focus();
+  };
+
   return (
-    <SeachStyled>
+    <SeachStyled className={searchText ? "active" : ""}>
       <input
         id="myInput"
         placeholder="search..."
         value={searchTextDebounce}
         onChange={handleChangeInput}
         zoom={1}
+        ref={ref}
       />
-      <SearchOutlined className="icon-search" />
+      <SearchOutlined className="icon-search" onClick={onFocus} />
     </SeachStyled>
   );
 }

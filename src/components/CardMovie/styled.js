@@ -5,6 +5,7 @@ export const CardMovie = styled.div`
     width: 25%;
     padding: 20px;
     min-width: 300px;
+
     .card {
       cursor: pointer;
       /* padding: 20px; */
@@ -14,6 +15,11 @@ export const CardMovie = styled.div`
       color: #fff;
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      min-height: 390px;
+      justify-content: center;
+
       .overlay {
         position: absolute;
         top: 0px;
@@ -63,6 +69,7 @@ export const CardMovie = styled.div`
     width: 100%;
     text-align: left;
     padding: 20px;
+
     .card {
       display: flex;
       cursor: pointer;
@@ -72,10 +79,11 @@ export const CardMovie = styled.div`
       background: #000000;
       color: #fff;
       position: relative;
+
       .card-image {
         min-width: 200px;
-        max-width: 200px;
         margin-right: 20px;
+        min-height: 390px;
       }
       .card-name {
         margin-bottom: 24px;

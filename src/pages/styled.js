@@ -20,37 +20,38 @@ export const Styled = styled.div`
     font-size: 24px;
     margin: auto;
     padding: 24px;
-    .tab {
-      display: flex;
-      > h1 {
-        cursor: pointer;
-        font-size: 32px;
-        color: #fff;
-        margin-top: 24px;
-        margin-right: 24px;
-        text-transform: uppercase;
-        &.active {
-          color: #e97101;
-        }
-        :hover {
-          color: #e97101;
-        }
-      }
-    }
+  }
+  .anticon {
+    cursor: pointer;
+  }
+  @media (max-width: 768px) {
+    justify-content: center;
     .anticon {
-      cursor: pointer;
+      display: none;
     }
-    @media (max-width: 768px) {
-      justify-content: center;
-      .tab {
-        h1 {
-          font-size: 14px;
-          margin-right: 12px;
-        }
-      }
-      .anticon {
-        display: none;
-      }
+  }
+`;
+
+export const TabStyled = styled.div`
+  display: flex;
+  > h1 {
+    cursor: pointer;
+    font-size: 32px;
+    color: #fff;
+    margin-top: 24px;
+    margin-right: 24px;
+    text-transform: uppercase;
+    &.active {
+      color: #e97101;
+    }
+    :hover {
+      color: #e97101;
+    }
+  }
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 14px;
+      margin-right: 12px;
     }
   }
 `;

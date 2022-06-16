@@ -20,7 +20,7 @@ export default function Banner() {
   };
 
   return (
-    <Styled autoplay>
+    <Styled>
       {listVideo.map((item, index) => (
         <BannerStyled key={item.id}>
           <div className="overlay"></div>
@@ -30,13 +30,11 @@ export default function Banner() {
             src={process.env.REACT_APP_URL_IMG + item.backdrop_path}
             preview={false}
           />
+
           <Info>
             <p className="title-movie">{item.title}</p>
             <p>{item.overview}</p>
             <div className="director">Release date: {item.release_date}</div>
-            {/* <div className="cast">
-              Cast: Jenny Loifer, Sarah Obrien, Larry Moss Jr.
-            </div> */}
 
             <Button>
               <PlayCircleFilled />
@@ -45,6 +43,19 @@ export default function Banner() {
           </Info>
         </BannerStyled>
       ))}
+      {/* <iframe
+        className="banner-image"
+        style={{ width: "100%", height: "50vh" }}
+        src="https://www.youtube.com/embed/lWcD2icgoGs"
+        title="video"
+        frameborder="0"
+        controls="0"
+        allow="accelerometer; autoplay; encrypted-media; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        // allowFullScreen
+        // id="iframe"
+        loading="lazy"
+        // loop={1}
+      /> */}
     </Styled>
   );
 }

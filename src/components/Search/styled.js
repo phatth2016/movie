@@ -27,6 +27,10 @@ export const SeachStyled = styled.div`
     width: 260px;
     transition: all 0.3s ease-in-out;
   }
+  &.active {
+    width: 260px;
+    transition: all 0.3s ease-in-out;
+  }
 `;
 
 export const SearchModal = styled.div`
