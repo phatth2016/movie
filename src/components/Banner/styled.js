@@ -19,8 +19,22 @@ export const BannerStyled = styled.div`
     z-index: 1;
   }
   .banner-image {
-    max-height: 70vh;
+    width: 24vw;
+    height: 60vh;
+    transform: scale(4);
+    transform-origin: 50% 50%;
     object-fit: cover;
+    video {
+      transform-origin: 50% 50%;
+      width: 100% !important;
+      left: 0 !important;
+    }
+  }
+
+  .html5-video-player .video-click-tracking,
+  .html5-video-player .video-stream-player {
+    width: 100vh !important;
+    left: 0px;
   }
 
   @media (max-width: 768px) {

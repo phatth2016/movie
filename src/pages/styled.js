@@ -9,6 +9,10 @@ export const ListCard = styled.div`
   display: flex;
   flex-direction: ${(props) => (props.isGrid ? "row" : "column")};
   justify-content: center;
+  margin-top: 60px;
+  @media (max-width: 768px) {
+    margin-top: auto;
+  }
 `;
 
 export const Styled = styled.div`

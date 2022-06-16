@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const CardMovie = styled.div`
+export const CardMovieStyled = styled.div`
   &.vertical {
     width: 25%;
     padding: 20px;
@@ -26,7 +26,7 @@ export const CardMovie = styled.div`
         left: 0px;
         right: 0px;
         bottom: 0px;
-        background: rgba(0, 0, 0, 0.3);
+        /* background: rgba(0, 0, 0, 0.3); */
         z-index: 1;
       }
       .card-info {
@@ -48,54 +48,101 @@ export const CardMovie = styled.div`
           -webkit-box-orient: vertical;
           overflow: hidden;
           text-overflow: ellipsis;
-        }
-      }
-      :hover {
-        .card-info {
-          bottom: 12px;
-          transition: all 0.5s ease-in-out;
-          .overlay {
-            display: none;
-          }
-        }
-        &.active {
-          background: #e97101;
-          color: #fff;
+          margin-bottom: 12px;
         }
       }
     }
   }
-  &.horizontal {
-    width: 100%;
-    text-align: left;
-    padding: 20px;
 
-    .card {
-      display: flex;
-      cursor: pointer;
-      padding: 20px;
-      border-radius: 5px;
-      box-shadow: 0 0 2px #e97101;
-      background: #000000;
-      color: #fff;
-      position: relative;
-
-      .card-image {
-        min-width: 200px;
-        margin-right: 20px;
-        min-height: 390px;
-      }
-      .card-name {
-        margin-bottom: 24px;
-      }
-    }
-  }
   :hover {
     .card {
       box-shadow: 0 0 10px #e97101;
-      /* .overlay {
-        display: none;
-      } */
+    }
+  }
+
+  &.play {
+    position: relative;
+    .card {
+      position: absolute;
+      z-index: 3;
+      transform: scale(1.3);
+      box-shadow: 0 0 10px #e97101;
+      transition: all 0.2s linear;
+      .card-info {
+        padding: 24px;
+        position: static;
+      }
+    }
+  }
+
+  @media (max-width: 1440px) {
+    width: 25%;
+  }
+  @media (max-width: 1024px) {
+    width: 33.3%;
+  }
+  @media (max-width: 768px) {
+    width: 50%;
+    &.play {
+      position: relative;
+      z-index: 10;
+      .card {
+        position: relative;
+
+        transform: scale(1);
+        box-shadow: 0 0 10px #e97101;
+        transition: all 0.2s linear;
+        .card-info {
+          padding: 24px;
+          position: static;
+        }
+      }
+    }
+  }
+  @media (max-width: 425px) {
+    width: 100%;
+  }
+`;
+
+export const CardHorizontalStyled = styled.div`
+  width: 100%;
+  text-align: left;
+  padding: 20px;
+
+  .card {
+    display: flex;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 2px #e97101;
+    background: #000000;
+    color: #fff;
+
+    .card-image {
+      min-width: 200px;
+      width: 200px;
+      margin-right: 20px;
+      min-height: 300px;
+    }
+    .card-info {
+      color: #fff;
+      .card-name {
+        margin-bottom: 24px;
+        color: #fff;
+        font-size: 32px;
+      }
+      .card-desc {
+        margin-bottom: 12px;
+        > p {
+          color: #bfbfbf8f;
+        }
+      }
+    }
+  }
+
+  :hover {
+    .card {
+      box-shadow: 0 0 10px #e97101;
     }
   }
 

@@ -19,9 +19,9 @@ const LoaderStyled = styled.div`
   background: rgba(0, 0, 0, 0.5);
   .loader {
     position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+    bottom: 10vh;
+    transform: translateX(-50%);
     background: rgba(0, 0, 0, 0.5);
     z-index: 9999;
     border: 4px solid rgb(0 0 0 / 85%);

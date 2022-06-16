@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Banner from "../components/Banner";
-import CardMovie from "../components/CardMovie";
+import CardVertical from "../components/CardMovie/CardVertical";
 import { getListMovieByKeyword, getListMovies } from "../api";
 import { ListCard, Styled } from "./styled";
 import Video from "../components/Video";
@@ -18,6 +18,7 @@ import {
 import Tab from "./Tab";
 
 import { BackToTop } from "../components/base/BackToTop";
+import CardHorizontal from "../components/CardMovie/CardHorizontal";
 
 export default function Home({ searchText }) {
   const [listMovies, setListMovies] = React.useState([]);
@@ -122,13 +123,21 @@ export default function Home({ searchText }) {
       >
         <ListCard isGrid={isGrid}>
           {listMovies.map((movie, index) => {
+            if (!isGrid) {
+              return (
+                <CardHorizontal
+                  key={index}
+                  movie={movie}
+                  onClick={() => handleSelectVideo(movie)}
+                />
+              );
+            }
             return (
-              <CardMovie
-                direction={isGrid ? "vertical" : "horizontal"}
+              <CardVertical
+                direction="vertical"
                 key={index}
                 movie={movie}
                 onClick={() => handleSelectVideo(movie)}
-                isActive={selectedMovie?.id === movie.id}
               />
             );
           })}
